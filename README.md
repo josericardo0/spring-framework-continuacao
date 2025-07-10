@@ -1,1 +1,1 @@
-# spring-framework-continuacao
+# Revisando e aprofundando os estudos no ecossistema Spring.
