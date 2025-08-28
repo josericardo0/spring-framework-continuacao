@@ -11,19 +11,26 @@ import java.util.function.Predicate;
 public class UsuarioDaoService {
 
     private static List<Usuario> usuarios = new ArrayList<>();
+    private static int usuariosContagem = 0;
 
     static {
-        usuarios.add(new Usuario(1, "Zezinho", LocalDate.now().minusYears(30)));
-        usuarios.add(new Usuario(2, "Alipio", LocalDate.now().minusYears(100)));
-        usuarios.add(new Usuario(3, "Ceceu", LocalDate.now().minusYears(50)));
+        usuarios.add(new Usuario(++usuariosContagem, "Zezinho", LocalDate.now().minusYears(30)));
+        usuarios.add(new Usuario(++usuariosContagem, "Alipio", LocalDate.now().minusYears(100)));
+        usuarios.add(new Usuario(++usuariosContagem, "Ceceu", LocalDate.now().minusYears(50)));
     }
 
     public List<Usuario> buscarTodosUsuarios() {
         return usuarios;
     }
 
-//    public List<Usuario> buscarUsuario(int id) {
-//        Predicate<? super Usuario> predicate = usuario -> usuario.getId().equals(id);
-////        return usuarios.stream().filter(predicate).findFirst().get();
-//    }
+    public Usuario salvar(Usuario usuario) {
+        usuario.setId(++usuariosContagem);
+        usuarios.add(usuario);
+        return usuario;
+    }
+
+    public Usuario buscarUsuario(int id) {
+        Predicate<? super Usuario> predicate = usuario -> usuario.getId().equals(id);
+        return usuarios.stream().filter(predicate).findFirst().get();
+    }
 }
