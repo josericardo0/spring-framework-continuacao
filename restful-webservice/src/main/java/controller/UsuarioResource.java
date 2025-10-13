@@ -1,9 +1,11 @@
-package usuario;
+package controller;
 
-import exception.UsuarioNaoEncontradoException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import exception.UsuarioNaoEncontradoException;
+import usuario.Usuario;
+import usuario.UsuarioDaoService;
 
 import java.net.URI;
 import java.util.List;
@@ -29,7 +31,16 @@ public class UsuarioResource {
         if (usuario == null) {
             throw new UsuarioNaoEncontradoException("id: " + id);
         }
+        return usuario;
+    }
 
+    @DeleteMapping("/usuarios/{id}")
+    public Usuario deletarUsuario(@PathVariable int id) {
+        Usuario usuario = service.buscarUsuario(id);
+
+        if (usuario == null) {
+            throw new UsuarioNaoEncontradoException("id: " + id);
+        }
         return usuario;
     }
 
