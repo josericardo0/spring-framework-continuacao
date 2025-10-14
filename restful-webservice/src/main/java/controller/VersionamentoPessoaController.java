@@ -18,4 +18,25 @@ public class VersionamentoPessoaController {
     public PessoaV2 obterSegundaVersaoDePessoa() {
        return new PessoaV2(new Nome("Serjão", "Berranteiro"));
     }
+
+
+    @GetMapping(path= "/pessoa", params = "version=1")
+    public PessoaV1 obterPrimeiraVersaoDePessoaRequestParameter() {
+        return new PessoaV1("Irineu");
+    }
+
+    @GetMapping(path= "pessoa", params = "version=2")
+    public PessoaV2 obterSegundaVersaoDePessoaRequestParameter() {
+        return new PessoaV2(new Nome("Serjão", "Berranteiro"));
+    }
+
+    @GetMapping(path= "/pessoa/header", headers = "X-API-VERSION=1")
+    public PessoaV1 obterPrimeiraVersaoDePessoaRequestHeader() {
+        return new PessoaV1("Irineu");
+    }
+
+    @GetMapping(path= "/pessoa/header", headers = "X-API-VERSION=2")
+    public PessoaV2 obterSegundaVersaoDePessoaRequestHeader() {
+        return new PessoaV2(new Nome("Serjão", "Berranteiro"));
+    }
 }
