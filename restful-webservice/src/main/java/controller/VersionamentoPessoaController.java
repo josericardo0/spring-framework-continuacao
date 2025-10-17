@@ -39,4 +39,9 @@ public class VersionamentoPessoaController {
     public PessoaV2 obterSegundaVersaoDePessoaRequestHeader() {
         return new PessoaV2(new Nome("Serjão", "Berranteiro"));
     }
+
+//    @GetMapping(path= "/pessoa/accept", produces = "")
+//    public PessoaV2 obterPrimeiraVersaoDePessoaRequestHeader() {
+//        return new PessoaV2(new Nome("Serjão", "Berranteiro"));
+//    }
 }
